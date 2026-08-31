@@ -67,9 +67,34 @@ def main():
         
         try:
             # TODO: Get input values (force, area, original_length, change_in_length)
+            force = float(input("Enter applied force (N): "))
+            area = float(input("Enter cross-sectional area (m^2): "))
+            original_length = float(input("Enter original length (m): "))
+            change_in_length = float(input("Enter change in length (m): "))
 
             # TODO: Validate inputs (positive values, non-zero where needed)
-            
+            if force < 0:
+                print("Force cannot be negative!")
+                continue
+
+            if area <= 0:
+                print(
+                    "Cross-sectional area must be greater than zero "
+                    "(prevents division error)!"
+                )
+                continue
+
+            if original_length <= 0:
+                print(
+                    "Original length must be greater than zero "
+                    "(prevents division error)!"
+                )
+                continue
+
+            if change_in_length < 0:
+                print("Change in length cannot be negative!")
+                continue
+
             # TODO: Calculate stress and strain
             
             # TODO: Get material properties from database
