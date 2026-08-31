@@ -1,0 +1,143 @@
+def main():
+    """Main function for the stress and strain calculator with enhanced validation and control structures."""
+    
+    # Material Database 
+    materials = {"1": {"name": "Steel", "yield_strength": 250_000_000, "youngs_modulus": 200_000_000_000},
+                 "2": {"name": "Aluminum", "yield_strength": 95_000_000, "youngs_modulus": 69_000_000_000},
+                 "3": {"name": "Titanium", "yield_strength": 880_000_000, "youngs_modulus": 114_000_000_000}}
+    
+#  #Repeated Calculation Loop
+    while True:
+        print("\n=== Intelligent Stress and Strain Calculator ===")
+        print("1. Steel")
+        print("2. Aluminum")
+        print("3. Titanium")
+        print("4. Custom Material")
+        print("5. Exit Program")
+        
+        choice = input("Select a material option (1-5): ").strip()
+
+        if choice == "5":
+            print("\nExiting program gracefully. Goodbye!")
+            break
+        if choice in materials:
+            selected_material = materials[choice]["name"]
+            yield_strength = materials[choice]["yield_strength"]
+            youngs_modulus = materials[choice]["youngs_modulus"]
+        else:
+            selected_material = input("Enter custom material name: ").strip()
+            if not selected_material:
+                selected_material = "Custom Material"
+            
+            # Validate Material Inputs
+            while True:
+                try:
+                    ys_input = float(input("Enter Custom Yield Strength (MPa): "))
+                    if ys_input <= 0:
+                        print("Yield strength must be positive!")
+                        continue
+                    yield_strength = ys_input * 1_000_000  # Convert MPa to Pa
+                    break
+                except ValueError:
+                    print("Please enter a valid number for Yield Strength!")
+                    
+            while True:
+                try:
+                    ym_input = float(input("Enter Custom Young's Modulus (GPa): "))
+                    if ym_input <= 0:
+                        print("Young's Modulus must be positive!")
+                        continue
+                    youngs_modulus = ym_input * 1_000_000_000  # Convert GPa to Pa
+                    break
+                except ValueError:
+                    print("Please enter a valid number for Young's Modulus!")
+
+                #display reference material properties
+                print(f"\n--- Selected Material Properties ---")
+                print(f"Material: {selected_material}")
+        print(f"Yield Strength: {yield_strength / 1_000_000:.2f} MPa")
+        print(f"Typical Young's Modulus: {youngs_modulus / 1_000_000_000:.2f} GPa")
+        print("------------------------------------")
+
+        # --- ENHANCED INPUT HANDLING & VALIDATION ---
+        while True:
+            try:
+                force = float(input("Enter applied force (N): "))
+                if force < 0:
+                    print("Force cannot be negative!")
+                    continue
+                break
+            except ValueError:
+                print("Please enter a valid numeric value for Force!")
+
+        while True:
+            try:
+                area = float(input("Enter cross-sectional area (m^2): "))
+                if area <= 0:
+                    print("Cross-sectional area must be greater than zero (prevents division error)!")
+                    continue
+                break
+            except ValueError:
+                print("Please enter a valid numeric value for Area!")
+
+        while True:
+            try:
+                original_length = float(input("Enter original length (m): "))
+                if original_length <= 0:
+                    print("Original length must be greater than zero (prevents division error)!")
+                    continue
+                break
+            except ValueError:
+                print("Please enter a valid numeric value for Original Length!")
+
+        while True:
+            try:
+                change_in_length = float(input("Enter change in length (m): "))
+                if change_in_length < 0:
+                    print("Change in length cannot be negative!")
+                    continue
+                break
+            except ValueError:
+                print("Please enter a valid numeric value for Change in Length!")
+
+        # --- Core computations ---
+        stress = force / area
+        strain = change_in_length / original_length
+        stress_mpa = stress / 1_000_000
+
+        if change_in_length > 0:
+            loading_type = "Tension"
+        elif change_in_length < 0:
+            loading_type = "Compression"
+        else:
+            loading_type = "No deformation"
+
+        # --- Safety analysis ---
+        factor_of_safety = yield_strength / stress if stress > 0 else float('inf')
+        
+        if stress < yield_strength:
+            if factor_of_safety < 1.2:
+                safety_status = f"CAUTION - Factor of safety: {factor_of_safety:.2f}"
+            else:
+                safety_status = f"SAFE - Factor of safety: {factor_of_safety:.2f}"
+        else:
+            safety_status = f"CRITICAL FAILURE RISK - Stress exceeds Yield Strength! (FOS: {factor_of_safety:.2f})"
+
+        # --- Display formatted analysis output ---
+        print("\n" + "="*20 + " RESULTS " + "="*20)
+        print(f"Material Profile     : {selected_material}")
+        print(f"Applied Force        : {force:,.2f} N")
+        print(f"Cross-sectional Area : {area:.6f} m^2")
+        print(f"Original Length      : {original_length:,.4f} m")
+        print(f"Change in Length     : {change_in_length:,.6f} m")
+        print("-" * 49)
+        print(f"Calculated Stress    : {stress:,.2f} Pa ({stress_mpa:.4f} MPa)")
+        print(f"Calculated Strain    : {strain:.6f}")
+        print(f"Loading Classification: {loading_type}")
+        print("-" * 49)
+        print(f"ANALYSIS REPORT      : {safety_status}")
+        print("="*49)
+
+#Calling the main function
+if __name__ == "__main__":
+    main()
