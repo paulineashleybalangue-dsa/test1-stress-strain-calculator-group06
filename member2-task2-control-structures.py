@@ -83,6 +83,8 @@ def main():
         print(f"Typical Young's Modulus: {youngs_modulus / 1_000_000_000:.2f} GPa")
         print("------------------------------------")
 
+        abort_calculation = False
+        
         # --- ENHANCED INPUT HANDLING & VALIDATION ---
         #Validating Force
         while True:
