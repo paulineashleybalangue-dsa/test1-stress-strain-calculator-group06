@@ -76,7 +76,7 @@ def main():
             if exit_to_menu:
                 continue
 
-                #display reference material properties
+        #Display reference material properties
         print(f"\n--- Selected Material Properties ---")
         print(f"Material: {selected_material}")
         print(f"Yield Strength: {yield_strength / 1_000_000:.2f} MPa")
@@ -84,9 +84,14 @@ def main():
         print("------------------------------------")
 
         # --- ENHANCED INPUT HANDLING & VALIDATION ---
+        #Validating Force
         while True:
+            raw_val = input("Enter applied force (N): ").strip()
+            if raw_val.lower() in ['q', 'quit']:
+                abort_calculation = True
+                break
             try:
-                force = float(input("Enter applied force (N): "))
+                force = float(raw_val)
                 if force < 0:
                     print("Force cannot be negative!")
                     continue
