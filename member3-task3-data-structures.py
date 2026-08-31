@@ -12,11 +12,17 @@ def main():
     calculation_history = []
 
     # TODO: Initialize empty set for unique materials
+    unique_materials = set()
 
     # TODO: Create tuple for measurement units (N, m², m, Pa)
+    units = ("N", "m²", "m", "Pa")
 
     # TODO: Create materials database dictionary with at least 3 materials
     # Each material should have yield_strength and youngs_modulus
+
+    materials = {"1": {"name": "Steel", "yield_strength": 250_000_000, "youngs_modulus": 200_000_000_000},
+                 "2": {"name": "Aluminum", "yield_strength": 95_000_000, "youngs_modulus": 69_000_000_000},
+                 "3": {"name": "Titanium", "yield_strength": 880_000_000, "youngs_modulus": 114_000_000_000}}
 
     # Main calculation loop
     while True:
