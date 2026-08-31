@@ -124,7 +124,7 @@ def main():
 
         #Validate Original Length
         while True:
-            raw_val = input("Enter original length (m): ")
+            raw_val = input("Enter original length (m): ").strip()
             if raw_val.lower() in ['q', 'quit']:
                 abort_calculation = True
                 break 
@@ -138,19 +138,27 @@ def main():
                 print("Please enter a valid numeric value (or 'q' to 'quit')!")
 
         if abort_calculation:
-             print("\n[Calculation Canceled] Returning to main menu.")
-             continue
+            print("\n[Calculation Canceled] Returning to main menu.")
+            continue
 
         #Validate change in length
         while True:
+            raw_val = input("Enter change in length (m): ").strip()
+            if raw_val.lower() in ['q', 'quit']:
+                abort_calculation = True
+                break 
             try:
-                change_in_length = float(input("Enter change in length (m): "))
+                change_in_length = float(raw_val)
                 if change_in_length < 0:
                     print("Change in length cannot be negative!")
                     continue
                 break
             except ValueError:
-                print("Please enter a valid numeric value for Change in Length!")
+                print("Please enter a valid numeric value (or 'q' to quit)!")
+
+        if abort_calculation:
+            print("\n[Calculation Canceled] Returning to main menu.")
+            continue
 
         # --- Core computations ---
         stress = force / area
