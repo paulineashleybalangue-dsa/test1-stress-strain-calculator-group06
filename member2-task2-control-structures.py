@@ -124,15 +124,24 @@ def main():
 
         #Validate Original Length
         while True:
+            raw_val = input("Enter original length (m): ")
+            if raw_val.lower() in ['q', 'quit']:
+                abort_calculation = True
+                break 
             try:
-                original_length = float(input("Enter original length (m): "))
+                original_length = float(raw_val)
                 if original_length <= 0:
-                    print("Original length must be greater than zero (prevents division error)!")
+                    print("Original length must be greater than zero!") #Prevent zero division error
                     continue
                 break
             except ValueError:
-                print("Please enter a valid numeric value for Original Length!")
+                print("Please enter a valid numeric value (or 'q' to 'quit')!")
 
+        if abort_calculation:
+             print("\n[Calculation Canceled] Returning to main menu.")
+             continue
+
+        #Validate change in length
         while True:
             try:
                 change_in_length = float(input("Enter change in length (m): "))
