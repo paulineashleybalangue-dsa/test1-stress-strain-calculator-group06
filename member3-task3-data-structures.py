@@ -48,18 +48,30 @@ def main():
         # TODO: Get material selection from user
         choice = input("Select a material option (1-5): ").strip()
 
-
         # TODO: Check if user wants to quit
+        if choice == "5":
+            print("\nExiting program gracefully. Goodbye!")
+            break
 
         # TODO: Validate material exists in database
+        if choice in materials:
+            selected_material = materials[choice]["name"]
+            yield_strength = materials[choice]["yield_strength"]
+            youngs_modulus = materials[choice]["youngs_modulus"]
+        else:
+            # Custom material
+            selected_material = input("Enter custom material name: ").strip()
 
+            if not selected_material:
+                selected_material = "Custom Material"
+        
         try:
             # TODO: Get input values (force, area, original_length, change_in_length)
 
             # TODO: Validate inputs (positive values, non-zero where needed)
-
+            
             # TODO: Calculate stress and strain
-
+            
             # TODO: Get material properties from database
 
             # TODO: Calculate safety factor
@@ -86,11 +98,13 @@ def main():
     # - List of unique materials tested
     # - Detailed history of each calculation
 
+
     # TODO: Display statistics (optional)
     # - Highest stress
     # - Lowest safety factor
     # - Average strain
     # - Material test counts
+    
 
 
 # Standard Python execution pattern
