@@ -60,7 +60,11 @@ def main():
             
             while True:
                 try:
-                    ym_input = float(input("Enter Custom Young's Modulus (GPa): "))
+                    ym_raw = input("Enter Custom Young's Modulus (GPa): ").strip()
+                    if ym_raw.lower() in ["q", "quit"]:
+                        exit_to_menu = True
+                        break
+                    ym_input = float(y,_raw)
                     if ym_input <= 0:
                         print("Young's Modulus must be positive!")
                         continue
@@ -69,9 +73,12 @@ def main():
                 except ValueError:
                     print("Please enter a valid number for Young's Modulus!")
 
+            if exit_to_menu:
+                continue
+
                 #display reference material properties
-                print(f"\n--- Selected Material Properties ---")
-                print(f"Material: {selected_material}")
+        print(f"\n--- Selected Material Properties ---")
+        print(f"Material: {selected_material}")
         print(f"Yield Strength: {yield_strength / 1_000_000:.2f} MPa")
         print(f"Typical Young's Modulus: {youngs_modulus / 1_000_000_000:.2f} GPa")
         print("------------------------------------")
