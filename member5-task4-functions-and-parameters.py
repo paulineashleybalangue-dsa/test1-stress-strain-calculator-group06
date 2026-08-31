@@ -21,3 +21,9 @@ def calculate_strain(original_lenght, change_in_lenght):
     if original_lenght == 0:
         raise ValueError("Original lenght cannot be zero.")
     return change_in_lenght / original_lenght
+
+def calculate_youngs_modulus(stress, strain):
+    """Calculate Young's modulus from stress and strain."""
+    if strain == 0:
+        raise ValueError("Strain cannot be zero.")
+    return stress / strain
