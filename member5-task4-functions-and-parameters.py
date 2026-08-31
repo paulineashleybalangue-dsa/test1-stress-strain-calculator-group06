@@ -15,3 +15,9 @@ def calculate_stress(force, area):
     if area == 0:
         raise ValueError("Area cannot be zero.")
     return force / area
+
+def calculate_strain(original_lenght, change_in_lenght):
+    """Calculate strain based on original lenght and change in lenght."""
+    if original_lenght == 0:
+        raise ValueError("Original lenght cannot be zero.")
+    return change_in_lenght / original_lenght
