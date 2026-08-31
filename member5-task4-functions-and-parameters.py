@@ -1,4 +1,5 @@
 def validate_input(force, area, original_lenght, change_in_lenght):
+    """Validate that all input values are appropriate for calculations."""
     if force < 0:
         raise ValueError("Force must be a positive value.")
     if area <= 0:
