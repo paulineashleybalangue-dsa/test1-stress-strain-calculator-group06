@@ -49,11 +49,15 @@ def main():
         choice = input("Select a material option (1-5): ").strip()
 
         # TODO: Check if user wants to quit
-        if choice == "5":
-            print("\nExiting program gracefully. Goodbye!")
+        if choice.lower() in ["5", "q", "quit"]:
+            print("\nExiting program. Goodbye!")
             break
 
         # TODO: Validate material exists in database
+        if choice not in ["1", "2", "3", "4"]:
+            print("[Invalid Choice] Please select an option between 1 and 5.")
+            continue
+        
         if choice in materials:
             selected_material = materials[choice]["name"]
             yield_strength = materials[choice]["yield_strength"]
