@@ -96,10 +96,28 @@ def main():
                 continue
 
             # TODO: Calculate stress and strain
+            stress = force / area
+            strain = change_in_length / original_length
+            stress_mpa = stress / 1_000_000
             
             # TODO: Get material properties from database
-
+            if choice in materials:
+                yield_strength = materials[choice]["yield_strength"]
+                youngs_modulus = materials[choice]["youngs_modulus"]
+                
             # TODO: Calculate safety factor
+            factor_of_safety = yield_strength / stress if stress > 0 else float("inf")
+
+            if stress < yield_strength:
+                if factor_of_safety < 1.2:
+                    safety_status = f"CAUTION - Factor of safety: {factor_of_safety:.2f}"
+                else:
+                    safety_status = f"SAFE - Factor of safety: {factor_of_safety:.2f}"
+            else:
+                safety_status = (
+                    f"CRITICAL FAILURE RISK - Stress exceeds Yield Strength! "
+                    f"(FOS: {factor_of_safety:.2f})"
+                )
 
             # TODO: Create calculation record dictionary with all data
 
