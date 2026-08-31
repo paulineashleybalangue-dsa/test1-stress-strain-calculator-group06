@@ -120,13 +120,41 @@ def main():
                 )
 
             # TODO: Create calculation record dictionary with all data
+            calculation_record = {
+                "material": selected_material,
+                "force": force,
+                "area": area,
+                "original_length": original_length,
+                "change_in_length": change_in_length,
+                "stress": stress,
+                "strain": strain,
+                "stress_mpa": stress_mpa,
+                "yield_strength": yield_strength,
+                "youngs_modulus": youngs_modulus,
+                "factor_of_safety": factor_of_safety,
+                "safety_status": safety_status
+            }
 
             # TODO: Add record to history list
+            calculation_history.append(calculation_record)
 
             # TODO: Add material to unique materials set
+            unique_materials.add(selected_material)
 
             # TODO: Display results for this calculation
-
+            print("\n" + "=" * 20 + " RESULTS " + "=" * 20)
+            print(f"Material Profile      : {selected_material}")
+            print(f"Applied Force         : {force:,.2f} N")
+            print(f"Cross-sectional Area  : {area:.6f} m^2")
+            print(f"Original Length       : {original_length:,.4f} m")
+            print(f"Change in Length      : {change_in_length:,.6f} m")
+            print("-" * 49)
+            print(f"Calculated Stress     : {stress:,.2f} Pa ({stress_mpa:.4f} MPa)")
+            print(f"Calculated Strain     : {strain:.6f}")
+            print(f"Factor of Safety      : {factor_of_safety:.2f}")
+            print(f"ANALYSIS REPORT       : {safety_status}")
+            print("=" * 49)
+            
             pass
 
         except ValueError:
