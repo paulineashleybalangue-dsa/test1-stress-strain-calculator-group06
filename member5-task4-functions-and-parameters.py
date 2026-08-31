@@ -7,3 +7,10 @@ def validate_input(force, area, original_lenght, change_in_lenght):
         raise ValueError("Original lenght must be a positive value.")
     if change_in_lenght < 0:
         raise ValueError("Change in lenght must be a positive value.")
+    return True
+
+def calculate_stress(force, area):
+    """Calculate stress based on force and area."""
+    if area == 0:
+        raise ValueError("Area cannot be zero.")
+    return force / area
