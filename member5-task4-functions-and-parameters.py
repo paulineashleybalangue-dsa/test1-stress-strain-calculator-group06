@@ -27,3 +27,32 @@ def calculate_youngs_modulus(stress, strain):
     if strain == 0:
         raise ValueError("Strain cannot be zero.")
     return stress / strain
+
+def calculate_factor_of_safety(yield_strength, stress):
+    """Calculate the factor of safety from yield strength and stress."""
+    if stress <= 0:
+        raise ValueError("Stress value cannot be zero.")
+    if yield_strength <= 0:
+        raise ValueError("Yield strength must be a positive value.")
+    return yield_strength / stress
+
+def main_calculator(materials, force, area, original_lenght, change_in_lenght, yield_strength):
+    """"Main function orchestrate the stress-strain calculations."""
+    validate_input(force, area, original_lenght, change_in_lenght)
+
+    stress = calculate_stress(force, area)
+    strain = calculate_strain(original_lenght, change_in_lenght)
+    youngs_modulus = calculate_youngs_modulus(stress, strain)
+    factor_of_safety = calculate_factor_of_safety(yield_strength, stress)
+    return {
+        "materials": materials,
+        "force": force,
+        "area": area,
+        "original_lenght": original_lenght,
+        "change_in_lenght": change_in_lenght,
+        "stress": stress,
+        "strain": strain,
+        "youngs_modulus": youngs_modulus,
+        "yield_strength": yield_strength,
+        "factor_of_safety": factor_of_safety
+    }
