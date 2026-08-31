@@ -98,6 +98,10 @@ def main():
                 break
             except ValueError:
                 print("Please enter a valid numeric value for Force!")
+                
+        if abort_calculation:
+            print("\n[Calculation Canceled] Returning to main menu.")
+            continue
 
         while True:
             try:
