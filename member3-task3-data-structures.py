@@ -154,7 +154,7 @@ def main():
             print(f"Factor of Safety      : {factor_of_safety:.2f}")
             print(f"ANALYSIS REPORT       : {safety_status}")
             print("=" * 49)
-            
+
             pass
 
         except ValueError:
@@ -168,7 +168,22 @@ def main():
     # - Total number of calculations
     # - List of unique materials tested
     # - Detailed history of each calculation
+    
+    print("\n=== SESSION SUMMARY ===")
+    print(f"Total number of calculations: {len(calculation_history)}")
 
+    print("\nUnique materials tested:")
+    for material in unique_materials:
+        print(f"- {material}")
+
+    print("\n=== Calculation History ===")
+    for number, record in enumerate(calculation_history, start=1):
+        print(f"\nCalculation #{number}")
+        print(f"Material: {record['material']}")
+        print(f"Stress: {record['stress']:.2f} Pa")
+        print(f"Strain: {record['strain']:.6f}")
+        print(f"Factor of Safety: {record['factor_of_safety']:.2f}")
+        print(f"Safety Status: {record['safety_status']}")
 
     # TODO: Display statistics (optional)
     # - Highest stress
@@ -176,7 +191,6 @@ def main():
     # - Average strain
     # - Material test counts
     
-
 
 # Standard Python execution pattern
 if __name__ == "__main__":
