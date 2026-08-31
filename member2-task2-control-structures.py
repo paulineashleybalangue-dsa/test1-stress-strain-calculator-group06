@@ -33,7 +33,7 @@ def main():
             youngs_modulus = materials[choice]["youngs_modulus"]
         else:
             selected_material = input("Enter custom material name: ").strip()
-            if not selected_material.lower() in ["q", "quit"]:
+            if  selected_material.lower() in ["q", "quit"]:
                 continue
             if not selected_material:
                 selected_material = "Custom Material"
@@ -84,7 +84,7 @@ def main():
         print("------------------------------------")
 
         abort_calculation = False
-        
+
         # --- ENHANCED INPUT HANDLING & VALIDATION ---
         #Validating Force
         while True:
