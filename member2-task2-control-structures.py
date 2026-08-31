@@ -54,7 +54,10 @@ def main():
                     break
                 except ValueError:
                     print("Please enter a valid number for Yield Strength!")
-                    
+
+            if exit_to_menu:
+                continue
+            
             while True:
                 try:
                     ym_input = float(input("Enter Custom Young's Modulus (GPa): "))
