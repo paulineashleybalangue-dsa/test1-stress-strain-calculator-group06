@@ -1,23 +1,57 @@
-def validate_positive_number(value, name):
-    """checks if a number is greater than zero ♡"""
+def validate_positive_number(value: float, name: str) -> float:
+    """
+    checks if a number is greater than zero ♡
+
+    Arguments:
+        value: the number being checked.
+        name: the name of the input being checked.
+
+    Returns:
+        The validated number.
+
+    Raises:
+        ValueError: if the number is zero or negative.
+    """
     if value <= 0:
         raise ValueError(f"{name} must be greater than zero.")
     return value
 
 
-def validate_non_zero(value, name):
-    """checks if a number is not zero ♡"""
+def validate_non_zero(value: float, name: str) -> float:
+    """
+    checks if a number is not zero ♡
+
+    Arguments:
+        value: the number being checked.
+        name: the name of the input being checked.
+
+    Returns:
+        The validated number.
+
+    Raises:
+        ValueError: if the number is zero.
+    """
     if value == 0:
         raise ValueError(f"{name} cannot be zero.")
     return value
 
-def get_validated_input(prompt, name):
-    """gets a valid number from the user (｡•ᴗ•｡)"""
+
+def get_validated_input(prompt: str, validator_func, name: str) -> float:
+    """
+    gets a valid number from the user (｡•ᴗ•｡)
+
+    Arguments:
+        prompt: the message shown to the user.
+        validator_func: the function used to validate the input.
+        name: the name of the input being checked.
+
+    Returns:
+        A validated number.
+    """
     while True:
         try:
             value = float(input(prompt))
-            validate_positive_number(value, name)
-            return value
+            return validator_func(value, name)
         except ValueError as error:
             print(f"Invalid input: {error} :(")
 
