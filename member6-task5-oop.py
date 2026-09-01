@@ -61,3 +61,8 @@ class StressStrainTest:
 steel_props = MaterialProperties(density=7850, yield_strength=250, typical_youngs_modulus=200)
 aluminum_props = MaterialProperties(density=2700, yield_strength=276, typical_youngs_modulus=69)
 titanium_props = MaterialProperties(density=4500, yield_strength=830, typical_youngs_modulus=116)
+
+#create materials
+steel = Metal("Steel", steel_props, is_ferrous=True)
+aluminum = Metal("Aluminum", aluminum_props, is_ferrous=False)
+titanium = Metal("Titanium", titanium_props, is_ferrous=False)
