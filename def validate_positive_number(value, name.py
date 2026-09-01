@@ -132,7 +132,7 @@ def get_material_properties(material_name: str, database: dict) -> dict:
     return database[material_name]
 
 
-def display_material_menu(database):
+def display_material_menu(database: dict) -> None:
     """
     displays the available materials (｡•̀ᴗ-)✧
 
@@ -148,7 +148,7 @@ def display_material_menu(database):
         print(f"- {material.title()}")
 
 
-def display_calculation_results(record):
+def display_calculation_results(record: dict) -> None:
     """
     displays the results of a calculation ♡
 
@@ -176,7 +176,7 @@ def display_calculation_results(record):
     print(f"Factor of Safety: {results['factor_of_safety']:.2f}")
 
 
-def display_safety_analysis(stress, yield_strength, safety_factor):
+def display_safety_analysis(stress: float, yield_strength: float, safety_factor: float) -> None:
     """
     displays the safety analysis ♡
 
