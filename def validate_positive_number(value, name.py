@@ -1,4 +1,4 @@
-def validate_positive_number(value, name):
+def validate_positive_number(value: float, name: str) -> float:
     """
     checks if a number is greater than zero ♡
 
@@ -17,7 +17,7 @@ def validate_positive_number(value, name):
     return value
 
 
-def validate_non_zero(value, name):
+def validate_non_zero(value: float, name: str) -> float:
     """
     checks if a number is not zero ♡
 
