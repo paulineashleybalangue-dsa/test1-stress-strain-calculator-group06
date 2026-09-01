@@ -56,7 +56,7 @@ def get_validated_input(prompt: str, validator_func, name: str) -> float:
             print(f"Invalid input: {error} :(")
 
 
-def create_calculation_record(material, inputs, results):
+def create_calculation_record(material: str, inputs: dict, results: dict) -> dict:
     """
     creates a dictionary for one calculation ♡
 
@@ -75,7 +75,7 @@ def create_calculation_record(material, inputs, results):
     }
 
 
-def add_to_history(history_list, record):
+def add_to_history(history_list: list, record: dict) -> None:
     """
     adds a calculation record to the history ♡
 
