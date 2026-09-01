@@ -72,3 +72,15 @@ test1_steel = StressStrainTest(steel, force=50000, area=0.01, original_length=10
 test2_aluminum = StressStrainTest(aluminum, force=10000, area=0.002, original_length=1, change_in_length=0.0015)
 test3_titanium = StressStrainTest(titanium, force=80000, area=0.015, original_length=5, change_in_length=0.004)
 
+#print results
+print(f"Test 1 — Steel:")
+print(f"Stress = {test1_steel.stress:,.0f} Pa")
+print(f"Strain = {test1_steel.strain}")
+
+print(f"\nTest 2 — Aluminum:")
+print(f"Stress = {test2_aluminum.stress:,.0f} Pa")
+print(f"Strain = {test2_aluminum.strain}")
+
+print(f"\nTest 3 — Titanium:")
+print(f"Stress = {test3_titanium.stress:,.0f} Pa")
+print(f"Strain = {test3_titanium.strain}")  
