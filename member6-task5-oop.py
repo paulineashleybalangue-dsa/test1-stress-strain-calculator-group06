@@ -17,3 +17,7 @@ class Material:
     def can_withstand_stress(self, stress_mpa: float) -> bool:
         """Check if the material can withstand the given stress (in MPa)."""
         return stress_mpa < self.properties.yield_strength
+class Metal(Material):
+    def __init__(self, name: str, properties: MaterialProperties, is_ferrous: bool = False):
+        super().__init__(name, properties)
+        self.is_ferrous = is_ferrous
