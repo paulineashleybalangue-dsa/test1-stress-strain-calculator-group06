@@ -46,3 +46,8 @@ class StressStrainTest:
     def strain(self) -> float:
         """Calculate strain (dimensionless). Formula: dL / L0"""
         return self._change_in_length / self._original_length
+
+    @property
+    def youngs_modulus(self) -> float:
+        """Calculate Young's modulus in GPa."""
+        return (self.stress_mpa / self.strain) / 1000
