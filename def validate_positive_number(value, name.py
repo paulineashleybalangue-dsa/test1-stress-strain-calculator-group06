@@ -55,3 +55,54 @@ def get_material_properties(material_name, database):
         raise ValueError("material not found :(")
 
     return database[material_name]
+
+def display_material_menu(database):
+    """display the available materials (｡•̀ᴗ-)✧"""
+    print("\navailable materials:")
+
+    for material in database:
+        print(f"- {material.title()}")
+
+
+def display_calculation_results(record):
+    """display the results of a calculation ♡"""
+    inputs = record["inputs"]
+    results = record["results"]
+
+    print("\ncalculation results")
+    print("-------------------")
+    print(f"material: {record['material'].title()}")
+    print(f"force: {inputs['force']:.2f} n")
+    print(f"area: {inputs['area']:.4f} m^2")
+    print(f"original length: {inputs['original_length']:.4f} m")
+    print(f"change in length: {inputs['change_in_length']:.4f} m")
+    print(f"stress: {results['stress']:.2f} pa")
+    print(f"strain: {results['strain']:.6f}")
+    print(f"young's modulus: {results['youngs_modulus']:.2f} pa")
+    print(f"factor of safety: {results['factor_of_safety']:.2f}")
+
+
+def display_safety_analysis(stress, yield_strength, safety_factor):
+    """display the safety analysis ♡"""
+    print("\nsafety analysis")
+    print("----------------")
+    print(f"stress: {stress:.2f} pa")
+    print(f"yield strength: {yield_strength:.2f} pa")
+    print(f"factor of safety: {safety_factor:.2f}")
+
+    if safety_factor >= 1:
+        print("the material is within the safe range ✓")
+    else:
+        print("warning: the material may not be safe :(")
+
+
+def display_session_summary(history, unique_materials):
+    """display a summary of the current session (˶ᵔ ᵕ ᵔ˶)"""
+    print("\nsession summary")
+    print("----------------")
+    print(f"total calculations: {len(history)}")
+
+    if unique_materials:
+        print(f"materials used: {', '.join(unique_materials)}")
+    else:
+        print("materials used: none")
