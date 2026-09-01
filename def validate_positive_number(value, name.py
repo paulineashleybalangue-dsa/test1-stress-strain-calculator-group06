@@ -200,7 +200,7 @@ def display_safety_analysis(stress: float, yield_strength: float, safety_factor:
         print("warning: the material may not be safe :(")
 
 
-def display_session_summary(history, unique_materials):
+def display_session_summary(history: list, unique_materials: list) -> None:
     """
     displays a summary of the current session (˶ᵔ ᵕ ᵔ˶)
 
@@ -219,3 +219,15 @@ def display_session_summary(history, unique_materials):
         print(f"Materials Used: {', '.join(unique_materials)}")
     else:
         print("Materials Used: none")
+
+assert calculate_stress(50000, 0.01) == 5000000
+assert calculate_strain(10, 0.005) == 0.0005
+assert calculate_youngs_modulus(5000000, 0.0005) == 10000000000
+assert calculate_factor_of_safety(250000000, 5000000) == 50
+
+# Test validation functions
+try:
+    validate_positive_number(-5, "force")
+    assert False, "Should have raised ValueError"
+except ValueError:
+    pass
