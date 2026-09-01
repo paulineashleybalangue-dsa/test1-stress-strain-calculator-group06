@@ -41,3 +41,8 @@ class StressStrainTest:
     def stress_mpa(self) -> float:
         """Convert Pa to MPa for material failure checks."""
         return self.stress / 1_000_000
+
+    @property
+    def strain(self) -> float:
+        """Calculate strain (dimensionless). Formula: dL / L0"""
+        return self._change_in_length / self._original_length
