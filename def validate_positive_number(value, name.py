@@ -1,15 +1,15 @@
 def validate_positive_number(value: float, name: str) -> float:
     """
-    checks if a number is greater than zero ♡
+    checks if a number is greater than zero (⋟﹏⋞)
 
-    Arguments:
+    arguments:
         value: the number being checked.
         name: the name of the input being checked.
 
-    Returns:
+    returns:
         The validated number.
 
-    Raises:
+    raises:
         ValueError: if the number is zero or negative.
     """
     if value <= 0:
@@ -19,16 +19,16 @@ def validate_positive_number(value: float, name: str) -> float:
 
 def validate_non_zero(value: float, name: str) -> float:
     """
-    checks if a number is not zero ♡
+    checks if a number is not zero (◡‿◡✿)
 
-    Arguments:
+    arguments:
         value: the number being checked.
         name: the name of the input being checked.
 
-    Returns:
+    returns:
         The validated number.
 
-    Raises:
+    raises:
         ValueError: if the number is zero.
     """
     if value == 0:
@@ -40,13 +40,13 @@ def get_validated_input(prompt: str, validator_func, name: str) -> float:
     """
     gets a valid number from the user (｡•ᴗ•｡)
 
-    Arguments:
+    arguments:
         prompt: the message shown to the user.
         validator_func: the function used to validate the input.
         name: the name of the input being checked.
 
-    Returns:
-        A validated number.
+    returns:
+        a validated number.
     """
     while True:
         try:
@@ -55,20 +55,51 @@ def get_validated_input(prompt: str, validator_func, name: str) -> float:
         except ValueError as error:
             print(f"Invalid input: {error} :(")
 
-def create_calculation_record(material, inputs, results):
-    """create a dictionary for one calculation ♡"""
+def create_calculation_record(
+    material: str,
+    inputs: dict,
+    results: dict
+) -> dict:
+    """
+    creates a dictionary for one calculation ٩(๑❛ᴗ❛๑)۶
+
+    arguments:
+        material: the material used in the calculation.
+        inputs: the input values used for the calculation.
+        results: the calculated results.
+
+    returns:
+        A dictionary containing the material, inputs, and results.
+    """
     return {
         "material": material,
         "inputs": inputs,
         "results": results
     }
 
-def add_to_history(history_list, record):
-    """add a calculation record to the history ♡"""
+
+def add_to_history(history_list: list, record: dict) -> None:
+    """
+    adds a calculation record to the history ✧(⸝⸝⸝ᵒ̴̶̷ ｡ ᵒ̴̶̷⸝⸝⸝)
+
+    arguments:
+        history_list: the list containing calculation records.
+        record: the calculation record to add.
+
+    returns:
+        None.
+    """
     history_list.append(record)
 
-def get_materials_database():
-    """return the materials properties dictionary ♡"""
+
+def get_materials_database() -> dict:
+    """
+    returns the materials properties dictionary ^‿^
+
+    returns:
+        A dictionary containing the available materials
+        and their properties.
+    """
     return {
         "steel": {
             "yield_strength": 250000000
@@ -81,8 +112,23 @@ def get_materials_database():
         }
     }
 
-def get_material_properties(material_name, database):
-    """get the properties of a selected material ♡"""
+def get_material_properties(
+    material_name: str,
+    database: dict
+) -> dict:
+    """
+    gets the properties of a selected material ≽^•⩊•^≼
+
+    arguments:
+        material_name: the name of the material.
+        database: the materials properties dictionary.
+
+    returns:
+        A dictionary containing the material properties.
+
+    raises:
+        ValueError: if the material is not found.
+    """
     material_name = material_name.lower()
 
     if material_name not in database:
