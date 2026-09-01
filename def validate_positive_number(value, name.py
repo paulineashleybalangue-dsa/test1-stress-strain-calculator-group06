@@ -1,13 +1,13 @@
-def validate_positive_number(value: float, name: str) -> float:
+def validate_positive_number(value, name):
     """
-    checks if a number is greater than zero (⋟﹏⋞)
+    checks if a number is greater than zero ♡
 
     arguments:
         value: the number being checked.
         name: the name of the input being checked.
 
     returns:
-        The validated number.
+        the validated number.
 
     raises:
         ValueError: if the number is zero or negative.
@@ -17,16 +17,16 @@ def validate_positive_number(value: float, name: str) -> float:
     return value
 
 
-def validate_non_zero(value: float, name: str) -> float:
+def validate_non_zero(value, name):
     """
-    checks if a number is not zero (◡‿◡✿)
+    checks if a number is not zero ♡
 
     arguments:
         value: the number being checked.
         name: the name of the input being checked.
 
     returns:
-        The validated number.
+        the validated number.
 
     raises:
         ValueError: if the number is zero.
@@ -35,12 +35,11 @@ def validate_non_zero(value: float, name: str) -> float:
         raise ValueError(f"{name} cannot be zero.")
     return value
 
-
-def get_validated_input(prompt: str, validator_func, name: str) -> float:
+def get_validated_input(prompt, name):
     """
     gets a valid number from the user (｡•ᴗ•｡)
 
-    arguments:
+    args:
         prompt: the message shown to the user.
         validator_func: the function used to validate the input.
         name: the name of the input being checked.
@@ -51,17 +50,14 @@ def get_validated_input(prompt: str, validator_func, name: str) -> float:
     while True:
         try:
             value = float(input(prompt))
-            return validator_func(value, name)
+            validate_positive_number(value, name)
+            return value
         except ValueError as error:
             print(f"Invalid input: {error} :(")
 
-def create_calculation_record(
-    material: str,
-    inputs: dict,
-    results: dict
-) -> dict:
+def create_calculation_record(material, inputs, results):
     """
-    creates a dictionary for one calculation ٩(๑❛ᴗ❛๑)۶
+    creates a dictionary for one calculation ♡
 
     arguments:
         material: the material used in the calculation.
@@ -69,18 +65,17 @@ def create_calculation_record(
         results: the calculated results.
 
     returns:
-        A dictionary containing the material, inputs, and results.
-    """
+        a dictionary containing the material, inputs, and results.
+    """    
     return {
-        "material": material,
-        "inputs": inputs,
-        "results": results
+        "Material": material,
+        "Inputs": inputs,
+        "Results": results
     }
 
-
-def add_to_history(history_list: list, record: dict) -> None:
+def add_to_history(history_list, record):
     """
-    adds a calculation record to the history ✧(⸝⸝⸝ᵒ̴̶̷ ｡ ᵒ̴̶̷⸝⸝⸝)
+    adds a calculation record to the history ♡
 
     arguments:
         history_list: the list containing calculation records.
@@ -91,12 +86,11 @@ def add_to_history(history_list: list, record: dict) -> None:
     """
     history_list.append(record)
 
-
-def get_materials_database() -> dict:
+def get_materials_database():
     """
-    returns the materials properties dictionary ^‿^
+    returns the materials properties dictionary ♡
 
-    returns:
+    Returns:
         A dictionary containing the available materials
         and their properties.
     """
@@ -112,19 +106,16 @@ def get_materials_database() -> dict:
         }
     }
 
-def get_material_properties(
-    material_name: str,
-    database: dict
-) -> dict:
-    """
-    gets the properties of a selected material ≽^•⩊•^≼
+def get_material_properties(material_name, database):
+   """
+    gets the properties of a selected material ♡
 
     arguments:
         material_name: the name of the material.
         database: the materials properties dictionary.
 
     returns:
-        A dictionary containing the material properties.
+        a dictionary containing the material properties.
 
     raises:
         ValueError: if the material is not found.
@@ -137,7 +128,15 @@ def get_material_properties(
     return database[material_name]
 
 def display_material_menu(database):
-    """display the available materials (｡•̀ᴗ-)✧"""
+    """
+    displays the available materials (｡•̀ᴗ-)✧
+
+    arguments:
+        database: the materials properties dictionary.
+
+    returns:
+        None.
+    """
     print("\navailable materials:")
 
     for material in database:
@@ -145,30 +144,49 @@ def display_material_menu(database):
 
 
 def display_calculation_results(record):
-    """display the results of a calculation ♡"""
+    """
+    displays the results of a calculation ♡
+
+    arguments:
+        record: the calculation record containing the inputs
+            and results.
+
+    returns:
+        None.
+    """
     inputs = record["inputs"]
     results = record["results"]
 
-    print("\ncalculation results")
+    print("\n== Calculation Results ==")
     print("-------------------")
-    print(f"material: {record['material'].title()}")
-    print(f"force: {inputs['force']:.2f} n")
-    print(f"area: {inputs['area']:.4f} m^2")
-    print(f"original length: {inputs['original_length']:.4f} m")
-    print(f"change in length: {inputs['change_in_length']:.4f} m")
-    print(f"stress: {results['stress']:.2f} pa")
-    print(f"strain: {results['strain']:.6f}")
-    print(f"young's modulus: {results['youngs_modulus']:.2f} pa")
-    print(f"factor of safety: {results['factor_of_safety']:.2f}")
+    print(f"Material: {record['material'].title()}")
+    print(f"Force: {inputs['force']:.2f} n")
+    print(f"Area: {inputs['area']:.4f} m^2")
+    print(f"Original Length: {inputs['original_length']:.4f} m")
+    print(f"Change in Length: {inputs['change_in_length']:.4f} m")
+    print(f"Stress: {results['stress']:.2f} pa")
+    print(f"Strain: {results['strain']:.6f}")
+    print(f"Young's Modulus: {results['youngs_modulus']:.2f} pa")
+    print(f"Factor of Safety: {results['factor_of_safety']:.2f}")
 
 
 def display_safety_analysis(stress, yield_strength, safety_factor):
-    """display the safety analysis ♡"""
-    print("\nsafety analysis")
+    """
+    displays the safety analysis ♡
+
+    arguments:
+        stress: the calculated stress.
+        yield_strength: the material's yield strength.
+        safety_factor: the calculated factor of safety.
+
+    returns:
+        None.
+    """
+    print("\n== Safety Analysis ==")
     print("----------------")
-    print(f"stress: {stress:.2f} pa")
-    print(f"yield strength: {yield_strength:.2f} pa")
-    print(f"factor of safety: {safety_factor:.2f}")
+    print(f"Stress: {stress:.2f} pa")
+    print(f"Yield Strength: {yield_strength:.2f} pa")
+    print(f"Factor of Safety: {safety_factor:.2f}")
 
     if safety_factor >= 1:
         print("the material is within the safe range ✓")
@@ -177,12 +195,21 @@ def display_safety_analysis(stress, yield_strength, safety_factor):
 
 
 def display_session_summary(history, unique_materials):
-    """display a summary of the current session (˶ᵔ ᵕ ᵔ˶)"""
-    print("\nsession summary")
+    """
+    displays a summary of the current session (˶ᵔ ᵕ ᵔ˶)
+
+    arguments:
+        history: the list of calculation records.
+        unique_materials: the materials used during the session.
+
+    returns:
+        None.
+    """
+    print("\n== Session Summary ==")
     print("----------------")
-    print(f"total calculations: {len(history)}")
+    print(f"Total Calculations: {len(history)}")
 
     if unique_materials:
-        print(f"materials used: {', '.join(unique_materials)}")
+        print(f"Materials Used: {', '.join(unique_materials)}")
     else:
-        print("materials used: none")
+        print("Materials Used: none")
