@@ -21,3 +21,10 @@ class Metal(Material):
     def __init__(self, name: str, properties: MaterialProperties, is_ferrous: bool = False):
         super().__init__(name, properties)
         self.is_ferrous = is_ferrous
+class StressStrainTest:
+    def __init__(self, material: Material, force: float, area: float, original_length: float, change_in_length: float):
+        self.material = material
+        self._force = force
+        self._area = area
+        self._original_length = original_length
+        self._change_in_length = change_in_length    
