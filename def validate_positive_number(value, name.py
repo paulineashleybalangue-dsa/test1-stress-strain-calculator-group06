@@ -220,14 +220,23 @@ def display_session_summary(history: list, unique_materials: list) -> None:
     else:
         print("Materials Used: none")
 
+#for when merged with other file for task 4
 assert calculate_stress(50000, 0.01) == 5000000
 assert calculate_strain(10, 0.005) == 0.0005
 assert calculate_youngs_modulus(5000000, 0.0005) == 10000000000
 assert calculate_factor_of_safety(250000000, 5000000) == 50
 
-# Test validation functions
+#test validation functions
 try:
     validate_positive_number(-5, "force")
     assert False, "Should have raised ValueError"
 except ValueError:
     pass
+
+database = get_materials_database()
+
+assert "steel" in database
+assert "aluminum" in database
+assert "concrete" in database
+
+assert get_material_properties("steel", database)["yield_strength"] == 250000000
