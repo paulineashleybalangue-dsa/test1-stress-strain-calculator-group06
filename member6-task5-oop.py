@@ -84,3 +84,8 @@ print(f"Strain = {test2_aluminum.strain}")
 print(f"\nTest 3 — Titanium:")
 print(f"Stress = {test3_titanium.stress:,.0f} Pa")
 print(f"Strain = {test3_titanium.strain}")  
+
+
+
+
+# task 5 code by member 6: Meghan Isabelle Espiritu
