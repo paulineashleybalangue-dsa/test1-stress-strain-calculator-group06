@@ -35,11 +35,12 @@ def validate_non_zero(value, name):
         raise ValueError(f"{name} cannot be zero.")
     return value
 
-def get_validated_input(prompt, name):
+
+def get_validated_input(prompt, validator_func, name):
     """
     gets a valid number from the user (｡•ᴗ•｡)
 
-    args:
+    arguments:
         prompt: the message shown to the user.
         validator_func: the function used to validate the input.
         name: the name of the input being checked.
@@ -50,10 +51,10 @@ def get_validated_input(prompt, name):
     while True:
         try:
             value = float(input(prompt))
-            validate_positive_number(value, name)
-            return value
+            return validator_func(value, name)
         except ValueError as error:
             print(f"Invalid input: {error} :(")
+
 
 def create_calculation_record(material, inputs, results):
     """
@@ -66,12 +67,13 @@ def create_calculation_record(material, inputs, results):
 
     returns:
         a dictionary containing the material, inputs, and results.
-    """    
+    """
     return {
-        "Material": material,
-        "Inputs": inputs,
-        "Results": results
+        "material": material,
+        "inputs": inputs,
+        "results": results
     }
+
 
 def add_to_history(history_list, record):
     """
@@ -86,12 +88,13 @@ def add_to_history(history_list, record):
     """
     history_list.append(record)
 
+
 def get_materials_database():
     """
     returns the materials properties dictionary ♡
 
-    Returns:
-        A dictionary containing the available materials
+    returns:
+        a dictionary containing the available materials
         and their properties.
     """
     return {
@@ -106,8 +109,9 @@ def get_materials_database():
         }
     }
 
+
 def get_material_properties(material_name, database):
-   """
+    """
     gets the properties of a selected material ♡
 
     arguments:
@@ -126,6 +130,7 @@ def get_material_properties(material_name, database):
         raise ValueError("material not found :(")
 
     return database[material_name]
+
 
 def display_material_menu(database):
     """
@@ -148,18 +153,19 @@ def display_calculation_results(record):
     displays the results of a calculation ♡
 
     arguments:
-        record: the calculation record containing the inputs
-            and results.
+        record: the calculation record containing the material,
+            inputs, and results.
 
     returns:
         None.
     """
+    material = record["material"]
     inputs = record["inputs"]
     results = record["results"]
 
     print("\n== Calculation Results ==")
     print("-------------------")
-    print(f"Material: {record['material'].title()}")
+    print(f"Material: {material.title()}")
     print(f"Force: {inputs['force']:.2f} n")
     print(f"Area: {inputs['area']:.4f} m^2")
     print(f"Original Length: {inputs['original_length']:.4f} m")
