@@ -36,7 +36,7 @@ def validate_non_zero(value: float, name: str) -> float:
     return value
 
 
-def get_validated_input(prompt, validator_func, name):
+def get_validated_input(prompt: str, validator_func, name: str) -> float:
     """
     gets a valid number from the user (｡•ᴗ•｡)
 
