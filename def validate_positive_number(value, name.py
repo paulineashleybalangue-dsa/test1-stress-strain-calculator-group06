@@ -166,13 +166,13 @@ def display_calculation_results(record: dict) -> None:
     print("\n== Calculation Results ==")
     print("-------------------")
     print(f"Material: {material.title()}")
-    print(f"Force: {inputs['force']:.2f} n")
+    print(f"Force: {inputs['force']:.2f} N")
     print(f"Area: {inputs['area']:.4f} m^2")
     print(f"Original Length: {inputs['original_length']:.4f} m")
     print(f"Change in Length: {inputs['change_in_length']:.4f} m")
-    print(f"Stress: {results['stress']:.2f} pa")
+    print(f"Stress: {results['stress']:.2f} Pa")
     print(f"Strain: {results['strain']:.6f}")
-    print(f"Young's Modulus: {results['youngs_modulus']:.2f} pa")
+    print(f"Young's Modulus: {results['youngs_modulus']:.2f} Pa")
     print(f"Factor of Safety: {results['factor_of_safety']:.2f}")
 
 
