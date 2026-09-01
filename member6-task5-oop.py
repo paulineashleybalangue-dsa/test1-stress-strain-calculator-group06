@@ -51,3 +51,6 @@ class StressStrainTest:
     def youngs_modulus(self) -> float:
         """Calculate Young's modulus in GPa."""
         return (self.stress_mpa / self.strain) / 1000
+    
+    def will_fail(self) -> bool:
+        return not self.material.can_withstand_stress(self.stress_mpa)
