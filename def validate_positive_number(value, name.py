@@ -89,7 +89,7 @@ def add_to_history(history_list: list, record: dict) -> None:
     history_list.append(record)
 
 
-def get_materials_database():
+def get_materials_database() -> dict:
     """
     returns the materials properties dictionary ♡
 
@@ -110,7 +110,7 @@ def get_materials_database():
     }
 
 
-def get_material_properties(material_name, database):
+def get_material_properties(material_name: str, database: dict) -> dict:
     """
     gets the properties of a selected material ♡
 
